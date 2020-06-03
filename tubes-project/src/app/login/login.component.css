@@ -1,0 +1,29 @@
+.welcome{
+	background-image: linear-gradient(to right, #5376A4, #F6F9F6 30%, #E71C22);
+	width:100%;
+	border: 1px solid blue;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.welcome-title{
+	margin-right: 10px;
+	font-family: Georgia, san-serif;
+	text-align:right;
+}
+
+.welcome-sub{
+	margin-right: 10px;
+	margin-top:-15px;
+	text-align:right;
+}
+
+.btn{
+	background-color: #E71C22;
+	border-color: #E71C22;
+}
+
+.btn:hover{
+	background-color: #5376A4;
+	border-color: #5376A4;
+}

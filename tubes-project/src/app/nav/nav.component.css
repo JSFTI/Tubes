@@ -1,0 +1,12 @@
+nav{
+	background-color: #5376A4;
+	color: white;
+}
+
+.navbar-brand{
+	cursor: default;
+}
+
+a{
+	cursor: pointer;
+}

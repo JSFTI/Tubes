@@ -1,0 +1,22 @@
+export interface User{
+	UserLevel: number,
+	ProfilePicture?: string | ArrayBuffer,
+	Nomor?: string,
+	Nama?: string,
+	Password?: string,
+	Email?: string,
+	Alamat?: string,
+	Nik?: string,
+	TempatLahir?: string,
+	TanggalLahir?: Date,
+	Agama?: number,
+	JenisKelamin?: number,
+	AsalSekolah?: string,
+	TanggalDaftar?: Date,
+	Ayah?: string,
+	Ibu?: string,
+	AlamatOrtu?: string,
+	WargaNegara?: string,
+	Status?: boolean,
+	Success?: boolean
+}

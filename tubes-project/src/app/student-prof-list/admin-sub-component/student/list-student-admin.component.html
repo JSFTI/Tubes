@@ -1,0 +1,47 @@
+<div>
+	<span> Menampilkan&nbsp; </span>
+	<select name="limit" [(ngModel)]="limit" (change)="getTableData()">
+		<option value="10"> 10 </option>
+		<option value="20"> 20 </option>
+		<option value="50"> 50 </option>
+	</select>
+	<span> &nbsp;data </span>
+	<input type="text" class="form-control search" [(ngModel)]="search" placeholder="Cari" (keyup)="searchTabel()">
+</div>
+<br>
+<table class="table">
+	<thead>
+		<th> # </th>
+		<th> Detail </th>
+		<th> Nomor </th>
+		<th> Nama </th>
+		<th> Status </th>
+	</thead>
+	<tbody>
+		<tr *ngIf="users.length == 0">
+			<td colspan="4" align="center"> Tidak ada data </td>
+		</tr>
+		<tr *ngFor="let user of users; let i = index">
+			<td> {{ page * limit + i + 1 }} </td>
+			<td> <span class="detail" data-toggle="modal" data-target="#detail" (click)="selectedUser(i)"> Detail </span> </td>
+			<td> {{ user.Nomor }} </td>
+			<td> {{ user.Nama | titlecase}} </td>
+			<td>
+				<button (click)="this.user.Status = !this.user.Status; updateStatus(i)" [ngClass]="{'btn':true, 'btn-aktif':this.user.Status, 'btn-nonaktif':!this.user.Status}">
+					<span *ngIf="user.Status" class="aktif"> Aktif </span>
+					<span *ngIf="!user.Status" class="aktif"> Tidak Aktif </span>
+				</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div style="float: right">
+	<button class="btn btn-panah" (click)="halamanLalu()" [disabled]="page == 0"> &#8592; </button>
+	<span *ngFor="let hal of pageList">
+		<button [class]="{'btn':true, 'btn-halaman': true, 'selectedPage': page == hal}" (click)="ubahHalaman(hal)"> {{ hal + 1 }} </button>
+	</span>
+	<button class="btn btn-panah" (click)="halamanBerikut()" [disabled]="page >= count / limit - 1"> &#8594; </button>
+</div>
+<div class="modal fade" id="detail" role="dialog" tabindex="-1" aria-labelledby="detail" aria-hidden="true">
+	<app-detail-student-admin [user]="detailUser"></app-detail-student-admin>
+</div>

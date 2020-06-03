@@ -1,0 +1,43 @@
+.detail{
+	text-decoration: underline;
+	color: green;
+	cursor: pointer;
+}
+
+.detail:hover{
+	color: lightgreen;
+}	
+
+.btn-aktif{
+	width: 120px;
+	height: 38.3px;
+	background-color: green;
+}
+
+.btn-nonaktif{
+	width: 120px;
+	height: 38.3px;
+	background-color: red;
+}
+
+.btn-panah{
+	border-color: black;
+}
+
+.btn-halaman{
+	border-color: #5376A4;
+}
+
+.selected{
+	background-color: #5376A4;
+	color: white;
+}
+
+.aktif{
+	color: white;
+}
+
+.search{
+	width: 30%;
+	float: right;
+}

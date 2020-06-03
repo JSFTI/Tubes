@@ -1,0 +1,164 @@
+<div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title"> Detail </h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true"> &times; </span>
+			</button>
+		</div>
+		<form (submit)="updatef(formUpdate)" #formUpdate="ngForm" class="was-validated">
+		<div class="modal-body">
+			<table class="table">
+				<tr colspan="4">
+					<td rowspan="15" align="center" valign="top" width="30%">
+						<img [src]="user.ProfilePicture" (error)="img.src='assets/_img/placeholderPasFoto.jpg'" class="img-thumbnail foto" width="168px" height="252px" #img>
+						<div class="custom-file" *ngIf="update">
+							<input type="file" id="profilepicture" name="profilepicture" class="custom-file-input" (change)="uploadFoto($event)" accept="image/png, image/jpg, image/jpeg, image/gif">
+							<label class="custom-file-label" for="profilepicture" style="text-align:left">Masukkan Foto</label>
+							<div class="invalid-feedback"> Format file yang diterima : png, jpg, jpeg atau gif </div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td> NIM </td>
+					<td> : </td>
+					<td> {{ user.Nomor }} </td>
+				</tr>
+				<tr>
+					<td> Nama </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.Nama }} </td>
+					<td *ngIf="update">
+						<input type="text" class="form-control" name="nama" [(ngModel)]="user.Nama" required> 
+						<div class="invalid-feedback"> Masukkan nama </div>
+					</td>
+				</tr>
+				<tr>
+					<td> E-mail </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.Email }} </td>
+					<td *ngIf="update"> 
+						<input type="text" class="form-control" name="email" [(ngModel)]="user.Email" required pattern="^(([^<>()\[\]\\.,;:\s@&quot;]+(\.[^<>()\[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$">
+						<div class="invalid-feedback" [hidden]="user.Email.length > 0"> Masukkan email </div>
+						<div class="invalid-feedback"> Format email salah </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Alamat </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.Alamat }} </td>
+					<td *ngIf="update"> 
+						<input type="text" class="form-control" name="alamat" [(ngModel)]="user.Alamat" required>
+						<div class="invalid-feedback"> Masukkan alamat </div>
+					</td>
+				</tr>
+				<tr>
+					<td> NIK </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.Nik }} </td>
+					<td *ngIf="update">
+						<input type="text" class="form-control" name="nik" [(ngModel)]="user.Nik" required pattern="[0-9]{16}">
+						<div class="invalid-feedback"> Format NIK salah </div>
+						<div class="invalid-feedback" [hidden]="user.Nik.length > 0"> Masukkan NIK </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Tempat / Tanggal Lahir </td>
+					<td> : </td>
+					<td> {{ user.TempatLahir }}&nbsp;/&nbsp;{{ user.TanggalLahir | date: 'd-M-yyyy'}} </td>
+				</tr>
+				<tr>
+					<td> Agama </td>
+					<td> : </td>
+					<td *ngIf="this.user.Agama == 0 && !update"> Islam </td>
+					<td *ngIf="this.user.Agama == 1 && !update"> Kristen Protestan </td>
+					<td *ngIf="this.user.Agama == 2 && !update"> Kristen Katolik </td>
+					<td *ngIf="this.user.Agama == 3 && !update"> Hindu </td>
+					<td *ngIf="this.user.Agama == 4 && !update"> Buddha </td>
+					<td *ngIf="this.user.Agama == 5 && !update"> Kong Hu Cu </td>
+					<td *ngIf="update">
+						<select name="agama" [(ngModel)]="user.Agama" name="agama" class="form-control" required>
+							<option value=0> Islam </option>
+							<option value=1> Kristen Protestan </option>
+							<option value=2> Kristen Katolik </option>
+							<option value=3> Hindu </option>
+							<option value=4> Buddha </option>
+							<option value=5> Kong Hu Cu </option>
+						</select>
+						<div class="invalid-feedback"> Pilih agama yang dianut </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Jenis Kelamin </td>
+					<td> : </td>
+					<td *ngIf="this.user.JenisKelamin == 0 && !update"> Pria </td>
+					<td *ngIf="this.user.JenisKelamin == 1 && !update"> Wanita </td>
+					<td *ngIf="update">
+						<select name="jenisKelamin" [(ngModel)]="user.JenisKelamin" class="form-control" required>
+							<option value=0> Pria </option>
+							<option value=1> Wanita </option>
+						</select>
+						<div class="invalid-feedback"> Pilih jenis kelamin </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Asal Sekolah </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.AsalSekolah }} </td>
+					<td *ngIf="update">
+						<input type="text" name="asalSekolah" [(ngModel)]="user.AsalSekolah" class="form-control" required>
+						<div class="invalid-feedback"> Masukkan asal sekolah </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Tanggal Daftar </td>
+					<td> : </td>
+					<td> {{ user.TanggalDaftar | date: 'd-M-yyyy' }} </td>
+				</tr>
+				<tr>
+					<td> Nama Ayah </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.Ayah }} </td>
+					<td *ngIf="update"> 
+						<input type="text" name="ayah" [(ngModel)]="user.Ayah" class="form-control" required>
+						<div class="invalid-feedback"> Masukkan nama ayah </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Nama Ibu </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.Ibu }} </td>
+					<td *ngIf="update">
+						<input type="text" name="ibu" [(ngModel)]="user.Ibu" class="form-control" required>
+						<div class="invalid-feedback"> Masukkan nama ibu </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Alamat Orang Tua </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.AlamatOrtu }} </td>
+					<td *ngIf="update">
+						<input type="text" name="alamatOrtu" [(ngModel)]="user.AlamatOrtu" class="form-control" required>
+						<div class="invalid-feedback"> Masukkan alamat orang tua </div>
+					</td>
+				</tr>
+				<tr>
+					<td> Kewarganegaraan </td>
+					<td> : </td>
+					<td *ngIf="!update"> {{ user.WargaNegara }} </td>
+					<td *ngIf="update">
+						<input type="text" name="warganegara" [(ngModel)]="user.WargaNegara" class="form-control" required>
+						<div class="invalid-feedback"> Masukkan kewarganegaraan </div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<button (click)="update = false" class="btn btn-secondary"> Detail </button>
+			<button (click)="update = true" class="btn btn-primary" type="submit"> Update </button>
+			<button data-dismiss="modal" (click)="hapusf()" class="btn btn-danger"> Delete </button>
+			<button data-dismiss="modal" class="btn btn-tutup" (click)="update = false" id="closeModal"> Tutup &times; </button>
+		</div>
+		</form>
+	</div>
+</div>

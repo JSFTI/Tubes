@@ -1,0 +1,14 @@
+.modal-header{
+	background-color: #5376A4;
+	color:white;
+}
+
+.btn-tutup{
+	background-color: green;
+	color:white;
+}
+
+.btn{
+	width: 120px;
+	height: 38.3px;
+}

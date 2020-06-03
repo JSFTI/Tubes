@@ -1,0 +1,9 @@
+<h3> Tambah Data </h3>
+<hr>
+<button type="button" class="btn btn-mahasiswa" data-toggle="modal" data-target="#addStudent" (click)="pilihanData(0)">Mahasiswa</button>
+<div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="addStudent" aria-hidden="true" *ngIf="pilihData == 0">
+	<app-add-student *ngIf="pilihData == 0" ></app-add-student>
+</div>
+<hr>
+<h3> Daftar Mahasiswa | Dosen </h3>
+<app-list-student-admin></app-list-student-admin>

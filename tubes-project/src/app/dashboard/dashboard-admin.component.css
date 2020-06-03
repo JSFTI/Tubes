@@ -1,0 +1,33 @@
+.welcome{
+	text-align: center;
+}
+
+.whitespace{
+	width: 10px;
+}
+
+.sidenav{
+	margin-left: 10px;
+}
+
+.sidenavbar{
+	border: 1px solid #5376A4;
+	background-color: #5376A4;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+}
+
+.sidenav a{
+	margin: auto;
+	padding: 0;
+	cursor: pointer;
+}
+
+.sidenav a:hover{
+	color: #33FFFF
+}
+
+.mainArea{
+	margin-right:10px;
+}
